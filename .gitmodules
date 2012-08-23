@@ -1,0 +1,9 @@
+[submodule "lib/qmlon"]
+	path = lib/qmlon
+	url = https://github.com/bzar/qmlon.git
+[submodule "lib/engineworks"]
+	path = lib/engineworks
+	url = https://github.com/bzar/engineworks.git
+[submodule "lib/glhck"]
+	path = lib/glhck
+	url = https://github.com/bzar/glhck.git
