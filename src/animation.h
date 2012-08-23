@@ -1,7 +1,7 @@
 #ifndef ANIMATION_HH
 #define ANIMATION_HH
 
-#include "model.h"
+#include "object.h"
 #include "ew/updatable.h"
 #include "GL/glhck.h"
 #include <functional>
@@ -10,9 +10,9 @@
 class Animation : ew::Updatable
 {
 public:
-  Animation(Model* model);
+  Animation(Object* object);
 
-  typedef std::function<void(Model*, float const)> Animator;
+  typedef std::function<void(Object*, float const)> Animator;
   static ew::UID const ID;
   ew::UID getEntityId() const { return ID; }
 
@@ -21,7 +21,7 @@ public:
   void addAnimator(Animator const& animator);
 
 private:
-  Model* model;
+  Object* object;
   std::vector<Animator> animators;
 };
 
