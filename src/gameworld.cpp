@@ -31,30 +31,16 @@ GameWorld::GameWorld(std::string const& sceneFile) :
     }}
   });
 
-  qmlon::Initializer<Camera> ci({
-    {"x", [](Camera& c, qmlon::Value::Reference v) { c.setX(v->asFloat()); }},
-    {"y", [](Camera& c, qmlon::Value::Reference v) { c.setY(v->asFloat()); }},
-    {"z", [](Camera& c, qmlon::Value::Reference v) { c.setZ(v->asFloat()); }},
-    {"yaw", [](Camera& c, qmlon::Value::Reference v) { c.setYaw(v->asFloat()); }},
-    {"pitch", [](Camera& c, qmlon::Value::Reference v) { c.setPitch(v->asFloat()); }},
-    {"roll", [](Camera& c, qmlon::Value::Reference v) { c.setRoll(v->asFloat()); }},
+  qmlon::Initializer<Object> oi({
+    {"x", [](Object& c, qmlon::Value::Reference v) { c.setX(v->asFloat()); }},
+    {"y", [](Object& c, qmlon::Value::Reference v) { c.setY(v->asFloat()); }},
+    {"z", [](Object& c, qmlon::Value::Reference v) { c.setZ(v->asFloat()); }},
+    {"yaw", [](Object& c, qmlon::Value::Reference v) { c.setYaw(v->asFloat()); }},
+    {"pitch", [](Object& c, qmlon::Value::Reference v) { c.setPitch(v->asFloat()); }},
+    {"roll", [](Object& c, qmlon::Value::Reference v) { c.setRoll(v->asFloat()); }},
   }, {
-    {"Animation", [&](Camera& c, qmlon::Object* obj) {
+    {"Animation", [&](Object& c, qmlon::Object* obj) {
       Animation* animation = new Animation(&c);
-      ai.init(*animation, obj);
-    }},
-  });
-
-  qmlon::Initializer<Model> mi({
-    {"x", [](Model& m, qmlon::Value::Reference v) { m.setX(v->asFloat()); }},
-    {"y", [](Model& m, qmlon::Value::Reference v) { m.setY(v->asFloat()); }},
-    {"z", [](Model& m, qmlon::Value::Reference v) { m.setZ(v->asFloat()); }},
-    {"yaw", [](Model& m, qmlon::Value::Reference v) { m.setYaw(v->asFloat()); }},
-    {"pitch", [](Model& m, qmlon::Value::Reference v) { m.setPitch(v->asFloat()); }},
-    {"roll", [](Model& m, qmlon::Value::Reference v) { m.setRoll(v->asFloat()); }},
-  }, {
-    {"Animation", [&](Model& m, qmlon::Object* obj) {
-      Animation* animation = new Animation(&m);
       ai.init(*animation, obj);
     }},
   });
@@ -62,11 +48,11 @@ GameWorld::GameWorld(std::string const& sceneFile) :
   qmlon::Initializer<GameWorld> gwi({}, {
     {"Model", [&](GameWorld& world, qmlon::Object* obj) {
       Model* model = new Model(&world, obj->getProperty("filename")->asString());
-      mi.init(*model, obj);
+      oi.init(*model, obj);
     }},
     {"Camera", [&](GameWorld& world, qmlon::Object* obj) {
       Camera* camera = new Camera(&world);
-      ci.init(*camera, obj);
+      oi.init(*camera, obj);
     }}
   });
 
