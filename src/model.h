@@ -17,6 +17,8 @@ public:
 
   void render(ew::RenderContext* context);
 
+  GameWorld* getWorld() const;
+
   void setModel(std::string const& filename);
 
   void setX(float const value);
@@ -27,7 +29,12 @@ public:
   void setPitch(float const value);
   void setRoll(float const value);
 
+  void changeYaw(float const delta);
+  void changePitch(float const delta);
+  void changeRoll(float const delta);
+
 private:
+  GameWorld* world;
   glhckObject* o;
 };
 

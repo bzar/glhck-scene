@@ -7,6 +7,12 @@ Scene {
     yaw: -45.0
     pitch: -90.0
     roll: 0.0
+
+    Animation {
+      Yaw {
+        speed: 90.0
+      }
+    }
   }
   Model {
     filename: "model/raf22031.ctm"
@@ -16,6 +22,12 @@ Scene {
     yaw: 0.0
     pitch: -90.0
     roll: 0.0
+
+    Animation {
+      Roll {
+        speed: 180.0
+      }
+    }
   }
   Model {
     filename: "model/raf22031.ctm"
@@ -25,6 +37,12 @@ Scene {
     yaw: 45.0
     pitch: -90.0
     roll: 0.0
+
+    Animation {
+      Pitch {
+        speed: 45.0
+      }
+    }
   }
   Model {
     filename: "model/raf22031.ctm"
