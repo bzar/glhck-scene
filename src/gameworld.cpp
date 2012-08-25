@@ -18,6 +18,27 @@ GameWorld::GameWorld(std::string const& sceneFile) :
     {"duration", [](Animation& a, qmlon::Value::Reference v) { a.setDuration(v->asFloat()); }},
     {"loop", [](Animation& a, qmlon::Value::Reference v) { a.setLoop(v->asBoolean()); }}
   }, {
+    {"X", [&](Animation& animation, qmlon::Object* obj) {
+      float from = obj->getProperty("from")->asFloat();
+      float to = obj->getProperty("to")->asFloat();
+      animation.addAnimator([from, to](Object* object, float const progress){
+        object->setX(from + (to - from) * progress);
+      });
+    }},
+    {"Y", [&](Animation& animation, qmlon::Object* obj) {
+      float from = obj->getProperty("from")->asFloat();
+      float to = obj->getProperty("to")->asFloat();
+      animation.addAnimator([from, to](Object* object, float const progress){
+        object->setY(from + (to - from) * progress);
+      });
+    }},
+    {"Z", [&](Animation& animation, qmlon::Object* obj) {
+      float from = obj->getProperty("from")->asFloat();
+      float to = obj->getProperty("to")->asFloat();
+      animation.addAnimator([from, to](Object* object, float const progress){
+        object->setZ(from + (to - from) * progress);
+      });
+    }},
     {"Yaw", [&](Animation& animation, qmlon::Object* obj) {
       float from = obj->getProperty("from")->asFloat();
       float to = obj->getProperty("to")->asFloat();

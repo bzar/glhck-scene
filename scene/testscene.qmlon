@@ -88,4 +88,28 @@ Scene {
     x: 5.0, y: 3.0, z: -20.0
     yaw: 45.0, pitch: -90.0, roll: 0.0
   }
+
+  Model {
+    filename: "model/raf22031.ctm"
+    x: -15.0, y: 0.0, z: -25.0
+    yaw: 90.0, pitch: -90.0, roll: 0.0
+
+    SequentialAnimation {
+      loop: true
+      Animation {
+        duration: 10.0
+        X { from: -15.0, to: 15.0 }
+      }
+      Animation {
+        Yaw { from: 90.0, to: -90.0 }
+      }
+      Animation {
+        duration: 10.0
+        X { from: 15.0, to: -15.0 }
+      }
+      Animation {
+        Yaw { from: -90.0, to: 90.0 }
+      }
+    }
+  }
 }
