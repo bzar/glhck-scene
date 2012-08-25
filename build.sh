@@ -1,12 +1,6 @@
 #!/bin/sh
 
-git submodule init
-git submodule update
-
-cd lib/glhck
-git submodule init
-git submodule update
-cd -
+git submodule update --init --recursive
 
 mkdir target
 cd target
