@@ -3,9 +3,17 @@ Scene {
     x: 0.0, y: 0.0, z: 0.0
     yaw: 0.0, pitch: 180.0, roll: 0.0
 
-    Animation {
-      Roll {
-        speed: 90.0
+    SequentialAnimation {
+      loop: true
+      Animation {
+        duration: 5.0
+        Roll { from: -15.0, to: 15.0 }
+        Yaw { from: -15.0, to: 15.0 }
+      }
+      Animation {
+        duration: 5.0
+        Roll { from: 15.0, to: -15.0 }
+        Yaw { from: 15.0, to: -15.0 }
       }
     }
   }
@@ -16,9 +24,9 @@ Scene {
     yaw: -45.0, pitch: -90.0, roll: 0.0
 
     Animation {
-      Yaw {
-        speed: 90.0
-      }
+      duration: 4.0
+      loop: true
+      Yaw { from: 0.0, to: 360.0 }
     }
   }
   Model {
@@ -26,9 +34,16 @@ Scene {
     x: 0.0, y: 0.0, z: -20.0
     yaw: 0.0, pitch: -90.0, roll: 0.0
 
-    Animation {
-      Roll {
-        speed: 180.0
+    SequentialAnimation {
+      loop: true
+      Animation {
+        duration: 2.0
+        Roll { from: 0.0, to: 360.0 }
+      }
+      PauseAnimation { duration: 0.5 }
+      Animation {
+        duration: 2.0
+        Roll { from: 360.0, to: 0.0 }
       }
     }
   }
@@ -38,9 +53,9 @@ Scene {
     yaw: 45.0, pitch: -90.0, roll: 0.0
 
     Animation {
-      Pitch {
-        speed: 45.0
-      }
+      duration: 8.0
+      loop: true
+      Pitch { from: 0.0, to: 360.0 }
     }
   }
   Model {

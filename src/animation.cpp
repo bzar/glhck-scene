@@ -1,20 +1,45 @@
 #include "animation.h"
 
-ew::UID const Animation::ID = ew::getUID();
-
 Animation::Animation(Object* object) :
-  ew::Entity(object->getWorld()), ew::Updatable(object->getWorld()),
-  object(object), animators()
+  object(object), duration(1.0), time(0.0), loop(false), animators()
 {
 
 }
 
-void Animation::update(float const delta)
+void Animation::animate(float const delta)
 {
+  time += delta;
+  if(loop && time > duration)
+  {
+    time -= static_cast<int>(time / duration) * duration;
+  }
+
+  float progress = time < duration ? time / duration : 1.0;
+
   for(Animator& animator : animators)
   {
-    animator(object, delta);
+    animator(object, progress);
   }
+}
+
+bool Animation::isFinished() const
+{
+  return time >= duration;
+}
+
+void Animation::reset()
+{
+  time = 0.0;
+}
+
+void Animation::setDuration(float const value)
+{
+  duration = value;
+}
+
+void Animation::setLoop(bool const value)
+{
+  loop = value;
 }
 
 void Animation::addAnimator(Animator const& animator)

@@ -1,27 +1,31 @@
 #ifndef ANIMATION_HH
 #define ANIMATION_HH
 
+#include "animatable.h"
 #include "object.h"
-#include "ew/updatable.h"
-#include "GL/glhck.h"
 #include <functional>
 #include <vector>
 
-class Animation : ew::Updatable
+class Animation : public Animatable
 {
 public:
   Animation(Object* object);
 
   typedef std::function<void(Object*, float const)> Animator;
-  static ew::UID const ID;
-  ew::UID getEntityId() const { return ID; }
 
-  void update(float const delta);
+  void animate(float const delta);
+  bool isFinished() const;
+  void reset();
 
+  void setDuration(float const value);
+  void setLoop(bool const value);
   void addAnimator(Animator const& animator);
 
 private:
   Object* object;
+  float duration;
+  float time;
+  bool loop;
   std::vector<Animator> animators;
 };
 
