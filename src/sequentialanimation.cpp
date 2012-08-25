@@ -1,7 +1,7 @@
 #include "sequentialanimation.h"
 
 SequentialAnimation::SequentialAnimation(Object* object) :
-  object(object), loop(false), animatables()
+  CompoundAnimation(object)
 {
 
 }
@@ -21,40 +21,4 @@ void SequentialAnimation::animate(float const delta)
       break;
     }
   }
-}
-
-bool SequentialAnimation::isFinished() const
-{
-  for(AnimatableRef const& animatable : animatables)
-  {
-    if(!animatable->isFinished())
-    {
-      return false;
-    }
-  }
-
-  return true;
-}
-
-void SequentialAnimation::reset()
-{
-  for(AnimatableRef const& animatable : animatables)
-  {
-    animatable->reset();
-  }
-}
-
-Object* SequentialAnimation::getObject() const
-{
-  return object;
-}
-
-void SequentialAnimation::setLoop(bool const value)
-{
-  loop = value;
-}
-
-void SequentialAnimation::addAnimatable(Animatable* animatable)
-{
-  animatables.push_back(AnimatableRef(animatable));
 }

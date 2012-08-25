@@ -8,6 +8,7 @@
 #include "animationhandler.h"
 #include "animation.h"
 #include "sequentialanimation.h"
+#include "parallelanimation.h"
 #include "pauseanimation.h"
 
 namespace
@@ -58,23 +59,28 @@ GameWorld::GameWorld(std::string const& sceneFile) :
     {"loop", [](PauseAnimation& a, qmlon::Value::Reference v) { a.setLoop(v->asBoolean()); }}
   });
 
-  qmlon::Initializer<SequentialAnimation> sai({
-    {"loop", [](SequentialAnimation& a, qmlon::Value::Reference v) { a.setLoop(v->asBoolean()); }}
+  qmlon::Initializer<CompoundAnimation> cai({
+    {"loop", [](CompoundAnimation& a, qmlon::Value::Reference v) { a.setLoop(v->asBoolean()); }}
   }, {
-    {"Animation", [&](SequentialAnimation& sa, qmlon::Object* obj) {
-      Animation* animation = new Animation(sa.getObject());
+    {"Animation", [&](CompoundAnimation& ca, qmlon::Object* obj) {
+      Animation* animation = new Animation(ca.getObject());
       ai.init(*animation, obj);
-      sa.addAnimatable(animation);
+      ca.addAnimatable(animation);
     }},
-    {"SequentialAnimation", [&](SequentialAnimation& sa, qmlon::Object* obj) {
-      SequentialAnimation* animation = new SequentialAnimation(sa.getObject());
-      sai.init(*animation, obj);
-      sa.addAnimatable(animation);
+    {"SequentialAnimation", [&](CompoundAnimation& ca, qmlon::Object* obj) {
+      SequentialAnimation* animation = new SequentialAnimation(ca.getObject());
+      cai.init(*animation, obj);
+      ca.addAnimatable(animation);
     }},
-    {"PauseAnimation", [&](SequentialAnimation& sa, qmlon::Object* obj) {
+    {"ParallelAnimation", [&](CompoundAnimation& ca, qmlon::Object* obj) {
+      ParallelAnimation* animation = new ParallelAnimation(ca.getObject());
+      cai.init(*animation, obj);
+      ca.addAnimatable(animation);
+    }},
+    {"PauseAnimation", [&](CompoundAnimation& ca, qmlon::Object* obj) {
       PauseAnimation* animation = new PauseAnimation;
       pai.init(*animation, obj);
-      sa.addAnimatable(animation);
+      ca.addAnimatable(animation);
     }}
   });
 
@@ -93,7 +99,12 @@ GameWorld::GameWorld(std::string const& sceneFile) :
     }},
     {"SequentialAnimation", [&](Object& o, qmlon::Object* obj) {
       SequentialAnimation* animation = new SequentialAnimation(&o);
-      sai.init(*animation, obj);
+      cai.init(*animation, obj);
+      new AnimationHandler(this, animation);
+    }},
+    {"ParallelAnimation", [&](Object& o, qmlon::Object* obj) {
+      ParallelAnimation* animation = new ParallelAnimation(&o);
+      cai.init(*animation, obj);
       new AnimationHandler(this, animation);
     }},
   });
