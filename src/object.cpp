@@ -15,6 +15,38 @@ GameWorld* Object::getWorld() const
   return world;
 }
 
+float Object::getX() const {
+  kmVec3 const* pos = glhckObjectGetPosition(o);
+  return pos->x;
+}
+
+float Object::getY() const {
+  kmVec3 const* pos = glhckObjectGetPosition(o);
+  return pos->y;
+}
+
+float Object::getZ() const {
+  kmVec3 const* pos = glhckObjectGetPosition(o);
+  return pos->z;
+}
+
+
+float Object::getYaw() const {
+  kmVec3 const* rot = glhckObjectGetRotation(o);
+  return rot->z;
+}
+
+float Object::getPitch() const {
+  kmVec3 const* rot = glhckObjectGetRotation(o);
+  return rot->x;
+}
+
+float Object::getRoll() const {
+  kmVec3 const* rot = glhckObjectGetRotation(o);
+  return rot->y;
+}
+
+
 void Object::setX(float const value)
 {
   kmVec3 pos = *glhckObjectGetPosition(o);

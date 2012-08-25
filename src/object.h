@@ -12,6 +12,14 @@ public:
 
   GameWorld* getWorld() const;
 
+  virtual float getX() const;
+  virtual float getY() const;
+  virtual float getZ() const;
+
+  virtual float getYaw() const;
+  virtual float getPitch() const;
+  virtual float getRoll() const;
+
   virtual void setX(float const value);
   virtual void setY(float const value);
   virtual void setZ(float const value);

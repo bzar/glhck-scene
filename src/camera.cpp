@@ -16,6 +16,15 @@ void Camera::update(float const delta)
   glhckCameraUpdate(c);
 }
 
+float Camera::getYaw() const {
+  return Object::getRoll();
+}
+
+float Camera::getRoll() const {
+  return Object::getYaw();
+}
+
+
 void Camera::setYaw(float const value)
 {
   Object::setRoll(value);
