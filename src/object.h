@@ -12,17 +12,13 @@ public:
 
   GameWorld* getWorld() const;
 
-  void setX(float const value);
-  void setY(float const value);
-  void setZ(float const value);
+  virtual void setX(float const value);
+  virtual void setY(float const value);
+  virtual void setZ(float const value);
 
-  void setYaw(float const value);
-  void setPitch(float const value);
-  void setRoll(float const value);
-
-  void changeYaw(float const delta);
-  void changePitch(float const delta);
-  void changeRoll(float const delta);
+  virtual void setYaw(float const value);
+  virtual void setPitch(float const value);
+  virtual void setRoll(float const value);
 
 protected:
   void setObject(glhckObject* value);

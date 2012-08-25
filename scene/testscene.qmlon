@@ -7,12 +7,12 @@ Scene {
       loop: true
       Animation {
         duration: 5.0
-        Roll { from: -15.0, to: 15.0 }
+        Roll { from: -5.0, to: 5.0 }
         Yaw { from: -15.0, to: 15.0 }
       }
       Animation {
         duration: 5.0
-        Roll { from: 15.0, to: -15.0 }
+        Roll { from: 5.0, to: -5.0 }
         Yaw { from: 15.0, to: -15.0 }
       }
     }

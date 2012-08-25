@@ -18,6 +18,9 @@ public:
 
   void update(float const delta);
 
+  virtual void setYaw(float const value);
+  virtual void setRoll(float const value);
+
 private:
   glhckCamera* c;
 };

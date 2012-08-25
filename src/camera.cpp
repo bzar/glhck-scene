@@ -15,3 +15,13 @@ void Camera::update(float const delta)
 {
   glhckCameraUpdate(c);
 }
+
+void Camera::setYaw(float const value)
+{
+  Object::setRoll(value);
+}
+
+void Camera::setRoll(float const value)
+{
+  Object::setYaw(value);
+}

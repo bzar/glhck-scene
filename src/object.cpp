@@ -58,21 +58,6 @@ void Object::setRoll(float const value)
   glhckObjectRotation(o, &rot);
 }
 
-void Object::changeYaw(float const delta)
-{
-  glhckObjectRotatef(o, 0, 0, delta);
-}
-
-void Object::changePitch(float const delta)
-{
-  glhckObjectRotatef(o, delta, 0, 0);
-}
-
-void Object::changeRoll(float const delta)
-{
-  glhckObjectRotatef(o, 0, delta, 0);
-}
-
 void Object::setObject(glhckObject* value)
 {
   o = value;
