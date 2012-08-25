@@ -49,7 +49,8 @@ void Animation::ValueAnimator::reset()
 }
 
 Animation::Animation(Object* object) :
-  object(object), duration(1.0), time(0.0), loop(false), animators()
+  object(object), duration(1.0), time(0.0), loop(false), animators(),
+  easing(Easing::LINEAR)
 {
 
 }
@@ -62,7 +63,7 @@ void Animation::animate(float const delta)
     time -= static_cast<int>(time / duration) * duration;
   }
 
-  float progress = time < duration ? time / duration : 1.0;
+  float progress = time < duration ? easing(time / duration) : 1.0;
 
   for(Animator::Reference animator : animators)
   {
@@ -83,6 +84,11 @@ void Animation::reset()
   }
 
   time = 0.0;
+}
+
+void Animation::setEasing(Easing::Function func)
+{
+  easing = func;
 }
 
 void Animation::setDuration(float const value)

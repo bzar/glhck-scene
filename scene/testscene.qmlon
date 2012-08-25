@@ -77,6 +77,19 @@ Scene {
     filename: "model/raf22031.ctm"
     x: -5.0, y: 3.0, z: -20.0
     yaw: -45.0, pitch: -90.0, roll: 0.0
+    SequentialAnimation {
+      loop: true
+      Animation {
+        duration: 0.5
+        easing: "QuadOut"
+        Y { delta: 1.0 }
+      }
+      Animation {
+        duration: 0.5
+        easing: "QuadIn"
+        Y { delta: -1.0 }
+      }
+    }
   }
   Model {
     filename: "model/raf22031.ctm"

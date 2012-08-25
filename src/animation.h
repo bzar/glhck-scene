@@ -5,13 +5,26 @@
 #include "object.h"
 #include <functional>
 #include <vector>
+#include <map>
 #include <memory>
+
+namespace Easing
+{
+  typedef std::function<float(float)> Function;
+  Function const LINEAR = [](float t){ return t; };
+  Function const QUAD_IN = [](float t){ return t * t; };
+  Function const QUAD_OUT = [](float t){ return 2*t - t * t; };
+
+  std::map<std::string const, Function> const BY_NAME = {
+    {"Linear", LINEAR},
+    {"QuadIn", QUAD_IN},
+    {"QuadOut", QUAD_OUT},
+  };
+}
 
 class Animation : public Animatable
 {
 public:
-  Animation(Object* object);
-
   class Animator
   {
   public:
@@ -48,12 +61,13 @@ public:
   };
 
 
-
+  Animation(Object* object);
 
   void animate(float const delta);
   bool isFinished() const;
   void reset();
 
+  void setEasing(Easing::Function func);
   void setDuration(float const value);
   void setLoop(bool const value);
   void addAnimator(Animator* animator);
@@ -64,6 +78,7 @@ private:
   float time;
   bool loop;
   std::vector<Animator::Reference> animators;
+  Easing::Function easing;
 };
 
 #endif

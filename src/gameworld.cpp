@@ -32,7 +32,14 @@ GameWorld::GameWorld(std::string const& sceneFile) :
 {
   qmlon::Initializer<Animation> ai({
     {"duration", [](Animation& a, qmlon::Value::Reference v) { a.setDuration(v->asFloat()); }},
-    {"loop", [](Animation& a, qmlon::Value::Reference v) { a.setLoop(v->asBoolean()); }}
+    {"loop", [](Animation& a, qmlon::Value::Reference v) { a.setLoop(v->asBoolean()); }},
+    {"easing", [](Animation& a, qmlon::Value::Reference v) {
+      auto i = Easing::BY_NAME.find(v->asString());
+      if(i != Easing::BY_NAME.end())
+      {
+        a.setEasing(i->second);
+      }
+    }}
   }, {
     {"X", [&](Animation& animation, qmlon::Object* obj) {
       animation.addAnimator(createValueAnimator(obj, [](Object* o, float const v){ o->setX(v); }, [](Object* o){ return o->getX(); }));
