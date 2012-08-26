@@ -1,171 +1,171 @@
 Scene {
   Camera {
-    x: 0.0, y: 0.0, z: 0.0
-    yaw: -15.0, pitch: 180.0, roll: 0.0
+    x: 0, y: 0, z: 0
+    yaw: -15, pitch: 180, roll: 0
 
     SequentialAnimation {
       loop: true
       Animation {
-        duration: 5.0
-        Roll { to: 5.0 }
-        Yaw { delta: 30.0 }
+        duration: 5
+        Roll { to: 5 }
+        Yaw { delta: 30 }
       }
       Animation {
-        duration: 5.0
-        Roll { to: -5.0 }
-        Yaw { from: 15.0, delta: -30.0 }
+        duration: 5
+        Roll { to: -5 }
+        Yaw { from: 15, delta: -30 }
       }
     }
   }
 
   Model {
     filename: "model/raf22031.ctm"
-    x: -5.0, y: 0.0, z: -20.0
-    yaw: -45.0, pitch: -90.0, roll: 0.0
+    x: -5, y: 0, z: -20
+    yaw: -45, pitch: -90, roll: 0
 
     Animation {
-      duration: 4.0
+      duration: 4
       loop: true
-      Yaw { delta: 360.0, to: 360.0 }
+      Yaw { delta: 360, to: 360 }
     }
   }
   Model {
     filename: "model/raf22031.ctm"
-    x: 0.0, y: 0.0, z: -20.0
-    yaw: 0.0, pitch: -90.0, roll: 0.0
+    x: 0, y: 0, z: -20
+    yaw: 0, pitch: -90, roll: 0
 
     SequentialAnimation {
       loop: true
       Animation {
-        duration: 2.0
-        Roll { from: 0.0, to: 360.0 }
+        duration: 2
+        Roll { from: 0, to: 360 }
       }
       PauseAnimation { duration: 0.5 }
       Animation {
-        duration: 2.0
-        Roll { from: 360.0, to: 0.0 }
+        duration: 2
+        Roll { from: 360, to: 0 }
       }
     }
   }
   Model {
     filename: "model/raf22031.ctm"
-    x: 5.0, y: 0.0, z: -20.0
-    yaw: 45.0, pitch: -90.0, roll: 0.0
+    x: 5, y: 0, z: -20
+    yaw: 45, pitch: -90, roll: 0
 
     Animation {
-      duration: 8.0
+      duration: 8
       loop: true
-      Pitch { from: 0.0, to: 360.0 }
+      Pitch { from: 0, to: 360 }
     }
   }
   Model {
     filename: "model/raf22031.ctm"
-    x: -5.0, y: -3.0, z: -20.0
-    yaw: -45.0, pitch: -90.0, roll: 0.0
+    x: -5, y: -3, z: -20
+    yaw: -45, pitch: -90, roll: 0
 
     SequentialAnimation {
       loop: true
       Animation {
         loop: 3
         easing: "ExpOut"
-        Yaw { delta: -15.0 }
+        Yaw { delta: -15 }
       }
       Animation {
         easing: "ExpOut"
-        Yaw { delta: 45.0 }
+        Yaw { delta: 45 }
       }
     }
   }
   Model {
     filename: "model/raf22031.ctm"
-    x: 0.0, y: -3.0, z: -20.0
-    yaw: 0.0, pitch: -90.0, roll: 0.0
+    x: 0, y: -3, z: -20
+    yaw: 0, pitch: -90, roll: 0
   }
   Model {
     filename: "model/raf22031.ctm"
-    x: 5.0, y: -3.0, z: -20.0
-    yaw: 45.0, pitch: -90.0, roll: 0.0
+    x: 5, y: -3, z: -20
+    yaw: 45, pitch: -90, roll: 0
 
     SequentialAnimation {
       loop: true
       Animation {
         easing: "SineInOut"
-        Z { delta: 1.0 }
-        X { delta: 1.0 }
+        Z { delta: 1 }
+        X { delta: 1 }
       }
       Animation {
         easing: "SineInOut"
-        Z { delta: -1.0 }
-        X { delta: -1.0 }
+        Z { delta: -1 }
+        X { delta: -1 }
       }
     }
   }
   Model {
     filename: "model/raf22031.ctm"
-    x: -5.0, y: 3.0, z: -20.0
-    yaw: -45.0, pitch: -90.0, roll: 0.0
+    x: -5, y: 3, z: -20
+    yaw: -45, pitch: -90, roll: 0
     SequentialAnimation {
       loop: true
       Animation {
         duration: 0.5
         easing: "QuadOut"
-        Y { delta: 1.0 }
+        Y { delta: 1 }
       }
       Animation {
         duration: 0.5
         easing: "QuadIn"
-        Y { delta: -1.0 }
+        Y { delta: -1 }
       }
     }
   }
   Model {
     filename: "model/raf22031.ctm"
-    x: 0.0, y: 3.0, z: -20.0
-    yaw: 0.0, pitch: -90.0, roll: 0.0
+    x: 0, y: 3, z: -20
+    yaw: 0, pitch: -90, roll: 0
   }
   Model {
     filename: "model/raf22031.ctm"
-    x: 5.0, y: 3.0, z: -20.0
-    yaw: 45.0, pitch: -90.0, roll: 0.0
+    x: 5, y: 3, z: -20
+    yaw: 45, pitch: -90, roll: 0
 
     SequentialAnimation {
       loop: true
       ParallelAnimation {
-        Animation { X { delta: 1.0 } }
+        Animation { X { delta: 1 } }
         Animation {
-          duration: 2.0
-          Y { delta: 1.0 }
+          duration: 2
+          Y { delta: 1 }
         }
       }
       Animation {
-        X { delta: -1.0 }
-        Y { delta: -1.0 }
+        X { delta: -1 }
+        Y { delta: -1 }
       }
     }
   }
 
   Model {
     filename: "model/raf22031.ctm"
-    x: -15.0, y: 0.0, z: -25.0
-    yaw: 90.0, pitch: -90.0, roll: 0.0
+    x: -15, y: 0, z: -25
+    yaw: 90, pitch: -90, roll: 0
 
     SequentialAnimation {
       loop: true
       Animation {
-        duration: 5.0
+        duration: 5
         easing: "ExpInOut"
-        X { to: 15.0 }
+        X { to: 15 }
       }
       Animation {
-        Yaw { to: -90.0 }
+        Yaw { to: -90 }
       }
       Animation {
-        duration: 5.0
+        duration: 5
         easing: "ExpInOut"
-        X { to: -15.0 }
+        X { to: -15 }
       }
       Animation {
-        Yaw { to: 90.0 }
+        Yaw { to: 90 }
       }
     }
   }

@@ -10,6 +10,6 @@ Model::Model(GameWorld* world, std::string const& filename) :
 
 void Model::render(ew::RenderContext* context)
 {
-  glhckObjectRender(o);
+  glhckObjectDraw(o);
 }
 
