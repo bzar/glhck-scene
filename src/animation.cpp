@@ -1,5 +1,11 @@
 #include "animation.h"
 
+Easing::Function Easing::createInOut(Function const& in, Function const& out)
+{
+  return [&](float t){
+    return t < 0.5 ? 0.5 * in(2 * t) : 0.5 * out(2 * (t - 0.5)) + 0.5;
+  };
+}
 
 Animation::ValueAnimator::ValueAnimator(bool fromSet, float from,
                                         bool toSet, float to,

@@ -72,6 +72,20 @@ Scene {
     filename: "model/raf22031.ctm"
     x: 5.0, y: -3.0, z: -20.0
     yaw: 45.0, pitch: -90.0, roll: 0.0
+
+    SequentialAnimation {
+      loop: true
+      Animation {
+        easing: "SineInOut"
+        Z { delta: 1.0 }
+        X { delta: 1.0 }
+      }
+      Animation {
+        easing: "SineInOut"
+        Z { delta: -1.0 }
+        X { delta: -1.0 }
+      }
+    }
   }
   Model {
     filename: "model/raf22031.ctm"
@@ -125,14 +139,16 @@ Scene {
     SequentialAnimation {
       loop: true
       Animation {
-        duration: 10.0
+        duration: 5.0
+        easing: "ExpInOut"
         X { to: 15.0 }
       }
       Animation {
         Yaw { to: -90.0 }
       }
       Animation {
-        duration: 10.0
+        duration: 5.0
+        easing: "ExpInOut"
         X { to: -15.0 }
       }
       Animation {
