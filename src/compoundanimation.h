@@ -15,15 +15,20 @@ public:
   virtual bool isFinished() const;
   virtual void reset();
 
-  void setLoop(bool const value);
+  void setLoops(int const value);
+  float getDuration() const = 0;
+
   void addAnimatable(Animatable* animatable);
+  void resetAnimatables();
 
   Object* getObject() const;
 
 protected:
   typedef std::shared_ptr<Animatable> AnimatableRef;
   Object* object;
-  bool loop;
+  int loops;
+  int loop;
+
   std::vector<AnimatableRef> animatables;
 };
 

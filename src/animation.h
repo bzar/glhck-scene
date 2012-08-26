@@ -92,14 +92,17 @@ public:
 
   void setEasing(Easing::Function func);
   void setDuration(float const value);
-  void setLoop(bool const value);
+  float getDuration() const;
+  void setLoops(int const value);
   void addAnimator(Animator* animator);
+  void resetAnimators();
 
 private:
   Object* object;
   float duration;
   float time;
-  bool loop;
+  int loops;
+  int loop;
   std::vector<Animator::Reference> animators;
   Easing::Function easing;
 };

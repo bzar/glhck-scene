@@ -1,4 +1,5 @@
 #include "animation.h"
+#include <cmath>
 
 Easing::Function Easing::createInOut(Function const& in, Function const& out)
 {
@@ -55,7 +56,7 @@ void Animation::ValueAnimator::reset()
 }
 
 Animation::Animation(Object* object) :
-  object(object), duration(1.0), time(0.0), loop(false), animators(),
+  object(object), duration(1.0), time(0.0), loops(1), loop(1), animators(),
   easing(Easing::LINEAR)
 {
 
@@ -64,9 +65,19 @@ Animation::Animation(Object* object) :
 void Animation::animate(float const delta)
 {
   time += delta;
-  if(loop && time > duration)
+  if(time > duration)
   {
-    time -= static_cast<int>(time / duration) * duration;
+    if(loop < loops || loops == INFINITE_LOOPS)
+    {
+      int n = static_cast<int>(time / duration);
+      loop += n;
+      time -= n * duration;
+      resetAnimators();
+    }
+    else
+    {
+      time = duration;
+    }
   }
 
   float progress = time < duration ? easing(time / duration) : 1.0;
@@ -84,12 +95,9 @@ bool Animation::isFinished() const
 
 void Animation::reset()
 {
-  for(Animator::Reference animator : animators)
-  {
-    animator->reset();
-  }
-
+  resetAnimators();
   time = 0.0;
+  loop = 1;
 }
 
 void Animation::setEasing(Easing::Function func)
@@ -102,12 +110,25 @@ void Animation::setDuration(float const value)
   duration = value;
 }
 
-void Animation::setLoop(bool const value)
+float Animation::getDuration() const
 {
-  loop = value;
+  return loops != INFINITE_LOOPS ? duration * loops : INFINITY;
+}
+
+void Animation::setLoops(int const value)
+{
+  loops = value;
 }
 
 void Animation::addAnimator(Animator* animator)
 {
   animators.push_back(Animator::Reference(animator));
+}
+
+void Animation::resetAnimators()
+{
+  for(Animator::Reference animator : animators)
+  {
+    animator->reset();
+  }
 }

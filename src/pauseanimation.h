@@ -13,12 +13,14 @@ public:
   void reset();
 
   void setDuration(float const value);
-  void setLoop(bool const value);
+  float getDuration() const;
+  void setLoops(int const value);
 
 private:
   float duration;
   float time;
-  bool loop;
+  int loops;
+  int loop;
 };
 
 #endif

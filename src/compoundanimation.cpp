@@ -1,7 +1,7 @@
 #include "compoundanimation.h"
 
 CompoundAnimation::CompoundAnimation(Object* object) :
-  object(object), loop(false), animatables()
+  object(object), loops(1), loop(1), animatables()
 {
 
 }
@@ -21,15 +21,13 @@ bool CompoundAnimation::isFinished() const
 
 void CompoundAnimation::reset()
 {
-  for(AnimatableRef const& animatable : animatables)
-  {
-    animatable->reset();
-  }
+  resetAnimatables();
+  loop = 1;
 }
 
-void CompoundAnimation::setLoop(bool const value)
+void CompoundAnimation::setLoops(int const value)
 {
-  loop = value;
+  loops = value;
 }
 
 void CompoundAnimation::addAnimatable(Animatable* animatable)
@@ -40,4 +38,12 @@ void CompoundAnimation::addAnimatable(Animatable* animatable)
 Object* CompoundAnimation::getObject() const
 {
   return object;
+}
+
+void CompoundAnimation::resetAnimatables()
+{
+  for(AnimatableRef const& animatable : animatables)
+  {
+    animatable->reset();
+  }
 }

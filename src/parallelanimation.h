@@ -11,6 +11,7 @@ class ParallelAnimation : public CompoundAnimation
 public:
   ParallelAnimation(Object* object);
   void animate(float const delta);
+  float getDuration() const;
 };
 
 #endif

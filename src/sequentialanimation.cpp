@@ -1,4 +1,5 @@
 #include "sequentialanimation.h"
+#include <cmath>
 
 SequentialAnimation::SequentialAnimation(Object* object) :
   CompoundAnimation(object)
@@ -14,11 +15,28 @@ void SequentialAnimation::animate(float const delta)
     {
       animatable->animate(delta);
 
-      if(loop && animatable->isFinished() && isFinished())
+      if((loops == INFINITE_LOOPS || loop < loops) && animatable->isFinished() && isFinished())
       {
-        reset();
+        loop += 1;
+        resetAnimatables();
       }
       break;
     }
   }
+}
+
+
+float SequentialAnimation::getDuration() const
+{
+  float duration = 0;
+  for(AnimatableRef const& animatable : animatables)
+  {
+    float d = animatable->getDuration();
+    if(std::isinf(d))
+      return d;
+
+    duration += d;
+  }
+
+  return duration;
 }
