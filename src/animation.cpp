@@ -1,13 +1,6 @@
 #include "animation.h"
 #include <cmath>
 
-Easing::Function Easing::createInOut(Function const& in, Function const& out)
-{
-  return [&](float t){
-    return t < 0.5 ? 0.5 * in(2 * t) : 0.5 * out(2 * (t - 0.5)) + 0.5;
-  };
-}
-
 Animation::ValueAnimator::ValueAnimator(bool fromSet, float from,
                                         bool toSet, float to,
                                         bool deltaSet, float delta,
@@ -57,7 +50,7 @@ void Animation::ValueAnimator::reset()
 
 Animation::Animation(Object* object) :
   object(object), duration(1.0), time(0.0), loops(1), loop(1), animators(),
-  easing(Easing::LINEAR)
+  easing(Ease::LINEAR)
 {
 
 }
@@ -100,7 +93,7 @@ void Animation::reset()
   loop = 1;
 }
 
-void Animation::setEasing(Easing::Function func)
+void Animation::setEasing(Ease::EasingFunction func)
 {
   easing = func;
 }

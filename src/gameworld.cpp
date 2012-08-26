@@ -45,8 +45,8 @@ GameWorld::GameWorld(std::string const& sceneFile) :
   qmlon::Initializer<Animation> ai({
     {"duration", [](Animation& a, qmlon::Value::Reference v) { a.setDuration(v->asFloat()); }},
     {"easing", [](Animation& a, qmlon::Value::Reference v) {
-      auto i = Easing::BY_NAME.find(v->asString());
-      if(i != Easing::BY_NAME.end())
+      auto i = Ease::BY_NAME.find(v->asString());
+      if(i != Ease::BY_NAME.end())
       {
         a.setEasing(i->second);
       }

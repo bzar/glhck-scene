@@ -13,7 +13,6 @@ public:
   void reset();
 
   void setDuration(float const value);
-  float getDuration() const;
   void setLoops(int const value);
 
 private:

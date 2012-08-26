@@ -11,7 +11,6 @@ class SequentialAnimation : public CompoundAnimation
 public:
   SequentialAnimation(Object* object);
   void animate(float const delta);
-  float getDuration() const;
 };
 
 #endif

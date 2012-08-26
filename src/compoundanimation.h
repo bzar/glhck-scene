@@ -16,7 +16,6 @@ public:
   virtual void reset();
 
   void setLoops(int const value);
-  float getDuration() const = 0;
 
   void addAnimatable(Animatable* animatable);
   void resetAnimatables();

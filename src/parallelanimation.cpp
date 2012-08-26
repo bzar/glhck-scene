@@ -16,17 +16,6 @@ void ParallelAnimation::animate(float const delta)
   if((loops == INFINITE_LOOPS || loop < loops) && isFinished())
   {
     loop += 1;
-    reset();
+    resetAnimatables();
   }
-}
-
-float ParallelAnimation::getDuration() const
-{
-  float duration = 0;
-  for(AnimatableRef const& animatable : animatables)
-  {
-    float d = animatable->getDuration();
-    duration = d > duration ? d : duration;
-  }
-  return duration;
 }

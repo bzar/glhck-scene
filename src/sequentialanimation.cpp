@@ -24,19 +24,3 @@ void SequentialAnimation::animate(float const delta)
     }
   }
 }
-
-
-float SequentialAnimation::getDuration() const
-{
-  float duration = 0;
-  for(AnimatableRef const& animatable : animatables)
-  {
-    float d = animatable->getDuration();
-    if(std::isinf(d))
-      return d;
-
-    duration += d;
-  }
-
-  return duration;
-}

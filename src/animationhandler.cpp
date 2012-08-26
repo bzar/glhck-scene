@@ -14,5 +14,6 @@ AnimationHandler::~AnimationHandler()
 
 void AnimationHandler::update(float const delta)
 {
-  animatable->animate(delta);
+  if(!animatable->isFinished())
+    animatable->animate(delta);
 }
