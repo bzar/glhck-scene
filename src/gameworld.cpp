@@ -151,9 +151,9 @@ GameWorld::GameWorld(std::string const& sceneFile) :
   qmlon::Initializer<Mesh> mi({
     {"vertices", [](Mesh& m, qmlon::Value::Reference v) {
       std::vector<Mesh::Vertex> vertices;
-      for(qmlon::Value::Reference r : v->asList())
+      for(qmlon::Value::Reference ref : v->asList())
       {
-        qmlon::Object* o = r->asObject();
+        qmlon::Object* o = ref->asObject();
         float x = o->hasProperty("x") ? o->getProperty("x")->asFloat() : 0.0;
         float y = o->hasProperty("y") ? o->getProperty("y")->asFloat() : 0.0;
         float z = o->hasProperty("z") ? o->getProperty("z")->asFloat() : 0.0;
