@@ -3,6 +3,7 @@
 #include <fstream>
 
 #include "model.h"
+#include "mesh.h"
 #include "camera.h"
 
 #include "animationhandler.h"
@@ -69,6 +70,9 @@ GameWorld::GameWorld(std::string const& sceneFile) :
     }},
     {"Roll", [&](Animation& animation, qmlon::Object* obj) {
       animation.addAnimator(createValueAnimator(obj, [](Object* o, float const v){ o->setRoll(v); }, [](Object* o){ return o->getRoll(); }));
+    }},
+    {"Scale", [&](Animation& animation, qmlon::Object* obj) {
+      animation.addAnimator(createValueAnimator(obj, [](Object* o, float const v){ o->setScale(v); }, [](Object* o){ return o->getScale(); }));
     }}
   });
 
@@ -111,6 +115,7 @@ GameWorld::GameWorld(std::string const& sceneFile) :
     {"yaw", [](Object& o, qmlon::Value::Reference v) { o.setYaw(v->asFloat()); }},
     {"pitch", [](Object& o, qmlon::Value::Reference v) { o.setPitch(v->asFloat()); }},
     {"roll", [](Object& o, qmlon::Value::Reference v) { o.setRoll(v->asFloat()); }},
+    {"scale", [](Object& o, qmlon::Value::Reference v) { o.setScale(v->asFloat()); }},
   }, {
     {"Animation", [&](Object& o, qmlon::Object* obj) {
       Animation* animation = new Animation(&o);
@@ -132,10 +137,57 @@ GameWorld::GameWorld(std::string const& sceneFile) :
     }},
   });
 
+  qmlon::Initializer<Mesh> mi({
+    {"color", [](Mesh& m, qmlon::Value::Reference v) {
+      qmlon::Object* o = v->asObject();
+      float r = o->hasProperty("r") ? o->getProperty("r")->asFloat() : 1.0;
+      float g = o->hasProperty("g") ? o->getProperty("g")->asFloat() : 1.0;
+      float b = o->hasProperty("b") ? o->getProperty("b")->asFloat() : 1.0;
+      float a = o->hasProperty("a") ? o->getProperty("a")->asFloat() : 1.0;
+
+      m.setColor({r, g, b, a});
+    }},
+    {"vertices", [](Mesh& m, qmlon::Value::Reference v) {
+      std::vector<Mesh::Vertex> vertices;
+      for(qmlon::Value::Reference r : v->asList())
+      {
+        qmlon::Object* o = r->asObject();
+        float x = o->hasProperty("x") ? o->getProperty("x")->asFloat() : 0.0;
+        float y = o->hasProperty("y") ? o->getProperty("y")->asFloat() : 0.0;
+        float z = o->hasProperty("z") ? o->getProperty("z")->asFloat() : 0.0;
+        float nx = o->hasProperty("nx") ? o->getProperty("nx")->asFloat() : 0.0;
+        float ny = o->hasProperty("ny") ? o->getProperty("ny")->asFloat() : 0.0;
+        float nz = o->hasProperty("nz") ? o->getProperty("nz")->asFloat() : 0.0;
+        float tx = o->hasProperty("tx") ? o->getProperty("tx")->asFloat() : 0.0;
+        float ty = o->hasProperty("ty") ? o->getProperty("ty")->asFloat() : 0.0;
+        float r = o->hasProperty("r") ? o->getProperty("r")->asFloat() : 1.0;
+        float g = o->hasProperty("g") ? o->getProperty("g")->asFloat() : 1.0;
+        float b = o->hasProperty("b") ? o->getProperty("b")->asFloat() : 1.0;
+        float a = o->hasProperty("a") ? o->getProperty("a")->asFloat() : 1.0;
+        vertices.push_back({{x, y, z}, {nx, ny, nz}, {tx, ty}, {r, g, b, a}});
+      }
+      m.setVertices(vertices);
+    }},
+    {"indices", [](Mesh& m, qmlon::Value::Reference v) {
+      std::vector<unsigned int> indices;
+      for(qmlon::Value::Reference r : v->asList())
+      {
+        indices.push_back(r->asInteger());
+      }
+      m.setIndices(indices);
+    }},
+
+  });
+
   qmlon::Initializer<GameWorld> gwi({}, {
     {"Model", [&](GameWorld& world, qmlon::Object* obj) {
       Model* model = new Model(&world, obj->getProperty("filename")->asString());
       oi.init(*model, obj);
+    }},
+    {"Mesh", [&](GameWorld& world, qmlon::Object* obj) {
+      Mesh* mesh = new Mesh(&world);
+      oi.init(*mesh, obj);
+      mi.init(*mesh, obj);
     }},
     {"Camera", [&](GameWorld& world, qmlon::Object* obj) {
       Camera* camera = new Camera(&world);

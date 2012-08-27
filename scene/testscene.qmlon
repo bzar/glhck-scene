@@ -122,6 +122,20 @@ Scene {
     filename: "model/raf22031.ctm"
     x: 0, y: 3, z: -20
     yaw: 0, pitch: -90, roll: 0
+
+    SequentialAnimation {
+      loop: true
+      Animation {
+        easing: "SineInOut"
+        Scale { delta: 0.5 }
+        Y { delta: 0.5 }
+      }
+      Animation {
+        easing: "SineInOut"
+        Scale { delta: -0.5 }
+        Y { delta: -0.5 }
+      }
+    }
   }
   Model {
     filename: "model/raf22031.ctm"
@@ -167,6 +181,50 @@ Scene {
       Animation {
         Yaw { to: 90 }
       }
+    }
+  }
+
+  Mesh {
+    x: 0, y: 0, z: -40
+    yaw: 45, pitch: 45, roll: 0
+    scale: 5
+
+    color: Color { r: 0.4, g: 0.4, b: 0.4, a: 1.0 }
+
+    vertices: [
+      V{ x: -1, y: -1, z: -1 }
+      V{ x: 1,  y: -1, z: -1 }
+      V{ x: -1, y:  1, z: -1 }
+      V{ x: 1,  y:  1, z: -1 }
+      V{ x: -1, y: -1, z:  1 }
+      V{ x: 1,  y: -1, z:  1 }
+      V{ x: -1, y:  1, z:  1 }
+      V{ x: 1,  y:  1, z:  1 }
+    ]
+    indices: [
+      2, 1, 0,
+      2, 3, 1,
+      3, 5, 1,
+      3, 7, 5,
+      7, 4, 5,
+      7, 6, 4,
+      6, 0, 4,
+      6, 2, 0,
+      3, 6, 7,
+      3, 2, 6,
+      5, 0, 1,
+      5, 4, 0
+    ]
+
+    Animation {
+      duration: 4
+      loop: true
+      Yaw { from: 0, to: 360 }
+    }
+    Animation {
+      duration: 3
+      loop: true
+      Roll { from: 0, to: 360 }
     }
   }
 }

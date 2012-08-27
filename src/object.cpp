@@ -46,6 +46,10 @@ float Object::getRoll() const {
   return rot->y;
 }
 
+float Object::getScale() const {
+  kmVec3 const* scale = glhckObjectGetScale(o);
+  return scale->x;
+}
 
 void Object::setX(float const value)
 {
@@ -88,6 +92,12 @@ void Object::setRoll(float const value)
   kmVec3 rot = *glhckObjectGetRotation(o);
   rot.y = value;
   glhckObjectRotation(o, &rot);
+}
+
+void Object::setScale(float const value)
+{
+  kmVec3 scale = {value, value, value};
+  glhckObjectScale(o, &scale);
 }
 
 void Object::setObject(glhckObject* value)

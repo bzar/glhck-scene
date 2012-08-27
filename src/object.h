@@ -20,6 +20,8 @@ public:
   virtual float getPitch() const;
   virtual float getRoll() const;
 
+  virtual float getScale() const;
+
   virtual void setX(float const value);
   virtual void setY(float const value);
   virtual void setZ(float const value);
@@ -27,6 +29,8 @@ public:
   virtual void setYaw(float const value);
   virtual void setPitch(float const value);
   virtual void setRoll(float const value);
+
+  virtual void setScale(float const value);
 
 protected:
   void setObject(glhckObject* value);
