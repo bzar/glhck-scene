@@ -106,6 +106,13 @@ void Object::setColor(Color const& color)
   glhckObjectColor(o, &c);
 }
 
+void Object::setTexture(std::string const& filename)
+{
+  glhckTexture* t = glhckTextureNew(filename.data(), GLHCK_TEXTURE_DEFAULTS);
+  glhckObjectSetTexture(o, t);
+  glhckTextureFree(t);
+}
+
 void Object::setObject(glhckObject* value)
 {
   o = value;

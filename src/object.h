@@ -3,6 +3,7 @@
 
 #include "GL/glhck.h"
 #include "gameworld.h"
+#include <string>
 
 class Object
 {
@@ -41,6 +42,7 @@ public:
   virtual void setScale(float const value);
 
   virtual void setColor(Color const& color);
+  virtual void setTexture(std::string const& filename);
 
 protected:
   void setObject(glhckObject* value);
