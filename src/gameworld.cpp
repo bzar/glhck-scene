@@ -73,7 +73,7 @@ GameWorld::GameWorld(std::string const& sceneFile) :
     }},
     {"Scale", [&](Animation& animation, qmlon::Object* obj) {
       animation.addAnimator(createValueAnimator(obj, [](Object* o, float const v){ o->setScale(v); }, [](Object* o){ return o->getScale(); }));
-    }}
+    }},
   });
 
   qmlon::Initializer<PauseAnimation> pai({
@@ -116,6 +116,16 @@ GameWorld::GameWorld(std::string const& sceneFile) :
     {"pitch", [](Object& o, qmlon::Value::Reference v) { o.setPitch(v->asFloat()); }},
     {"roll", [](Object& o, qmlon::Value::Reference v) { o.setRoll(v->asFloat()); }},
     {"scale", [](Object& o, qmlon::Value::Reference v) { o.setScale(v->asFloat()); }},
+    {"color", [](Object& obj, qmlon::Value::Reference v) {
+      qmlon::Object* o = v->asObject();
+      float r = o->hasProperty("r") ? o->getProperty("r")->asFloat() : 1.0;
+      float g = o->hasProperty("g") ? o->getProperty("g")->asFloat() : 1.0;
+      float b = o->hasProperty("b") ? o->getProperty("b")->asFloat() : 1.0;
+      float a = o->hasProperty("a") ? o->getProperty("a")->asFloat() : 1.0;
+
+      obj.setColor({r, g, b, a});
+    }},
+
   }, {
     {"Animation", [&](Object& o, qmlon::Object* obj) {
       Animation* animation = new Animation(&o);
@@ -138,15 +148,6 @@ GameWorld::GameWorld(std::string const& sceneFile) :
   });
 
   qmlon::Initializer<Mesh> mi({
-    {"color", [](Mesh& m, qmlon::Value::Reference v) {
-      qmlon::Object* o = v->asObject();
-      float r = o->hasProperty("r") ? o->getProperty("r")->asFloat() : 1.0;
-      float g = o->hasProperty("g") ? o->getProperty("g")->asFloat() : 1.0;
-      float b = o->hasProperty("b") ? o->getProperty("b")->asFloat() : 1.0;
-      float a = o->hasProperty("a") ? o->getProperty("a")->asFloat() : 1.0;
-
-      m.setColor({r, g, b, a});
-    }},
     {"vertices", [](Mesh& m, qmlon::Value::Reference v) {
       std::vector<Mesh::Vertex> vertices;
       for(qmlon::Value::Reference r : v->asList())

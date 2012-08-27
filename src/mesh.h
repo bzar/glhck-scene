@@ -24,14 +24,6 @@ public:
     float z;
   };
 
-  struct Color
-  {
-    float r;
-    float g;
-    float b;
-    float a;
-  };
-
   struct Vertex
   {
     Vec3 position;
@@ -49,7 +41,6 @@ public:
 
   void setVertices(std::vector<Vertex> const& vertices);
   void setIndices(std::vector<unsigned int> const& indices);
-  void setColor(Color const& color);
 };
 
 #endif

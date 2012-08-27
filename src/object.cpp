@@ -100,7 +100,22 @@ void Object::setScale(float const value)
   glhckObjectScale(o, &scale);
 }
 
+void Object::setColor(Color const& color)
+{
+  glhckColor c = toGlhckColor(color);
+  glhckObjectColor(o, &c);
+}
+
 void Object::setObject(glhckObject* value)
 {
   o = value;
+}
+
+glhckColor Object::toGlhckColor(Color const& c)
+{
+  unsigned char r = c.r * 255;
+  unsigned char g = c.g * 255;
+  unsigned char b = c.b * 255;
+  unsigned char a = c.a * 255;
+  return {r, g, b, a};
 }

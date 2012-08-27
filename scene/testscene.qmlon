@@ -162,6 +162,7 @@ Scene {
     filename: "model/raf22031.ctm"
     x: -15, y: 0, z: -25
     yaw: 90, pitch: -90, roll: 0
+    color: Color{ r: 1.0, g: 0.7, b: 0.7 }
 
     SequentialAnimation {
       loop: true

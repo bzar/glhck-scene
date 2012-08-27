@@ -7,6 +7,14 @@
 class Object
 {
 public:
+  struct Color
+  {
+    float r;
+    float g;
+    float b;
+    float a;
+  };
+
   Object(GameWorld* world, glhckObject* o);
   ~Object();
 
@@ -32,9 +40,11 @@ public:
 
   virtual void setScale(float const value);
 
+  virtual void setColor(Color const& color);
+
 protected:
   void setObject(glhckObject* value);
-
+  glhckColor toGlhckColor(Color const& c);
   GameWorld* world;
   glhckObject* o;
 };
