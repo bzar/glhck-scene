@@ -1,7 +1,7 @@
 #include "pauseanimation.h"
 
 PauseAnimation::PauseAnimation() :
-  duration(1.0), time(0.0), loops(1), loop(0)
+  duration(1.0), time(0.0), loops(1), loop(1)
 {
 
 }
@@ -25,7 +25,7 @@ bool PauseAnimation::isFinished() const
 void PauseAnimation::reset()
 {
   time = 0.0;
-  loop = 0;
+  loop = 1;
 }
 
 void PauseAnimation::setDuration(float const value)

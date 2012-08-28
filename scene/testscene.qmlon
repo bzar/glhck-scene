@@ -239,4 +239,109 @@ Scene {
     scale: 1
     materialAlpha: true
   }
+
+  Sprite {
+    filename: "img/infantry_1.png"
+    x: -3, y: 0, z: -5
+    scale: 0.01
+    materialAlpha: true
+    SequentialAnimation {
+      loop: true
+      SequentialAnimation {
+        loop: 10
+        Animation { duration: 0.1, Y { delta: 0.1 } X { delta: 0.1 } }
+        Animation { duration: 0.1, Y { delta: -0.1 } X { delta: 0.1 } }
+        PauseAnimation { duration: 0.4 }
+        Animation { duration: 0.1, Y { delta: 0.1 } X { delta: -0.1 } }
+        Animation { duration: 0.1, Y { delta: -0.1 } X { delta: -0.1 } }
+        PauseAnimation { duration: 0.4 }
+        SequentialAnimation {
+          loop: 3
+          Animation { duration: 0.1, Y { delta: 0.1 } X { delta: 0.1 } }
+          Animation { duration: 0.1, Y { delta: -0.1 } X { delta: 0.1 } }
+        }
+        PauseAnimation { duration: 0.4 }
+      }
+      ParallelAnimation {
+        Animation { X { to: 0 } }
+        Animation { easing: "SineOut", Y { delta: 3 } }
+      }
+      ParallelAnimation {
+        Animation { X { to: -3 } }
+        Animation { easing: "SineIn", Y { delta: -3 } }
+      }
+    }
+  }
+
+  Sprite {
+    filename: "img/infantry_1.png"
+    x: -3, y: 0, z: -5
+    scale: 0.01
+    materialAlpha: true
+    SequentialAnimation {
+      PauseAnimation { duration: 2.2 }
+      SequentialAnimation {
+        loop: true
+        SequentialAnimation {
+          loop: 10
+          Animation { duration: 0.1, Y { delta: 0.1 } X { delta: 0.1 } }
+          Animation { duration: 0.1, Y { delta: -0.1 } X { delta: 0.1 } }
+          PauseAnimation { duration: 0.4 }
+          Animation { duration: 0.1, Y { delta: 0.1 } X { delta: -0.1 } }
+          Animation { duration: 0.1, Y { delta: -0.1 } X { delta: -0.1 } }
+          PauseAnimation { duration: 0.4 }
+          SequentialAnimation {
+            loop: 3
+            Animation { duration: 0.1, Y { delta: 0.1 } X { delta: 0.1 } }
+            Animation { duration: 0.1, Y { delta: -0.1 } X { delta: 0.1 } }
+          }
+          PauseAnimation { duration: 0.4 }
+        }
+        ParallelAnimation {
+          Animation { X { to: 0 } }
+          Animation { easing: "SineOut", Y { delta: 3 } }
+        }
+        ParallelAnimation {
+          Animation { X { to: -3 } }
+          Animation { easing: "SineIn", Y { delta: -3 } }
+        }
+      }
+    }
+  }
+
+  Sprite {
+    filename: "img/infantry_1.png"
+    x: -3, y: 0, z: -5
+    scale: 0.01
+    materialAlpha: true
+    SequentialAnimation {
+      PauseAnimation { duration: 4.4 }
+      SequentialAnimation {
+        loop: true
+        SequentialAnimation {
+          loop: 10
+          Animation { duration: 0.1, Y { delta: 0.1 } X { delta: 0.1 } }
+          Animation { duration: 0.1, Y { delta: -0.1 } X { delta: 0.1 } }
+          PauseAnimation { duration: 0.4 }
+          Animation { duration: 0.1, Y { delta: 0.1 } X { delta: -0.1 } }
+          Animation { duration: 0.1, Y { delta: -0.1 } X { delta: -0.1 } }
+          PauseAnimation { duration: 0.4 }
+          SequentialAnimation {
+            loop: 3
+            Animation { duration: 0.1, Y { delta: 0.1 } X { delta: 0.1 } }
+            Animation { duration: 0.1, Y { delta: -0.1 } X { delta: 0.1 } }
+          }
+          PauseAnimation { duration: 0.4 }
+        }
+        ParallelAnimation {
+          Animation { X { to: 0 } }
+          Animation { easing: "SineOut", Y { delta: 3 } }
+        }
+        ParallelAnimation {
+          Animation { X { to: -3 } }
+          Animation { easing: "SineIn", Y { delta: -3 } }
+        }
+      }
+    }
+  }
 }
