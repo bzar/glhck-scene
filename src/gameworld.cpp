@@ -117,6 +117,10 @@ GameWorld::GameWorld(std::string const& sceneFile) :
     {"roll", [](Object& o, qmlon::Value::Reference v) { o.setRoll(v->asFloat()); }},
     {"scale", [](Object& o, qmlon::Value::Reference v) { o.setScale(v->asFloat()); }},
     {"texture", [](Object& o, qmlon::Value::Reference v) { o.setTexture(v->asString()); }},
+    {"aabb", [](Object& o, qmlon::Value::Reference v) { o.setAABB(v->asBoolean()); }},
+    {"obb", [](Object& o, qmlon::Value::Reference v) { o.setOBB(v->asBoolean()); }},
+    {"wireframe", [](Object& o, qmlon::Value::Reference v) { o.setWireframe(v->asBoolean()); }},
+    {"materialAlpha", [](Object& o, qmlon::Value::Reference v) { o.setMaterialAlpha(v->asBoolean()); }},
     {"color", [](Object& obj, qmlon::Value::Reference v) {
       qmlon::Object* o = v->asObject();
       float r = o->hasProperty("r") ? o->getProperty("r")->asFloat() : 1.0;

@@ -43,9 +43,14 @@ public:
 
   virtual void setColor(Color const& color);
   virtual void setTexture(std::string const& filename);
+  virtual void setAABB(bool value);
+  virtual void setOBB(bool value);
+  virtual void setWireframe(bool value);
+  virtual void setMaterialAlpha(bool value);
 
 protected:
   void setObject(glhckObject* value);
+  void setMaterialFlag(glhckMaterialFlags flag, bool value);
   glhckColor toGlhckColor(Color const& c);
   GameWorld* world;
   glhckObject* o;

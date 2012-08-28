@@ -113,9 +113,41 @@ void Object::setTexture(std::string const& filename)
   glhckTextureFree(t);
 }
 
+void Object::setAABB(bool value)
+{
+  setMaterialFlag(GLHCK_MATERIAL_DRAW_AABB, value);
+}
+
+void Object::setOBB(bool value)
+{
+  setMaterialFlag(GLHCK_MATERIAL_DRAW_OBB, value);
+}
+
+void Object::setWireframe(bool value)
+{
+  setMaterialFlag(GLHCK_MATERIAL_WIREFRAME, value);
+}
+
+void Object::setMaterialAlpha(bool value)
+{
+  setMaterialFlag(GLHCK_MATERIAL_ALPHA, value);
+}
+
 void Object::setObject(glhckObject* value)
 {
   o = value;
+}
+
+void Object::setMaterialFlag(glhckMaterialFlags flag, bool value)
+{
+  if(value)
+  {
+    glhckObjectMaterialFlags(o, glhckObjectGetMaterialFlags(o) | flag);
+  }
+  else
+  {
+    glhckObjectMaterialFlags(o, glhckObjectGetMaterialFlags(o) ^ flag);
+  }
 }
 
 glhckColor Object::toGlhckColor(Color const& c)
