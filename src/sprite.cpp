@@ -6,7 +6,6 @@ Sprite::Sprite(GameWorld* world, std::string const& filename) :
   Object(world, glhckSpriteNewFromFile(filename.data(), 0, 0, GLHCK_TEXTURE_DEFAULTS)),
   Entity(world), Renderable(world)
 {
-  glhckObjectSetGeometryType(o, GLHCK_TRIANGLES);
 }
 
 void Sprite::render(ew::RenderContext* context)
