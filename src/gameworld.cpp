@@ -4,6 +4,7 @@
 
 #include "model.h"
 #include "mesh.h"
+#include "sprite.h"
 #include "camera.h"
 
 #include "animationhandler.h"
@@ -194,6 +195,10 @@ GameWorld::GameWorld(std::string const& sceneFile) :
       Mesh* mesh = new Mesh(&world);
       oi.init(*mesh, obj);
       mi.init(*mesh, obj);
+    }},
+    {"Sprite", [&](GameWorld& world, qmlon::Object* obj) {
+      Sprite* sprite = new Sprite(&world, obj->getProperty("filename")->asString());
+      oi.init(*sprite, obj);
     }},
     {"Camera", [&](GameWorld& world, qmlon::Object* obj) {
       Camera* camera = new Camera(&world);

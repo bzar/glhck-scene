@@ -232,4 +232,11 @@ Scene {
       Roll { from: 0, to: 360 }
     }
   }
+
+  Sprite {
+    filename: "img/infantry_1.png"
+    x: 0, y: 0, z: -50
+    scale: 1
+    materialAlpha: true
+  }
 }

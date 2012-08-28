@@ -20,3 +20,4 @@ target_link_libraries(glhckscene engineworks glfw glhck qmlon ${GLFW_LIBRARIES})
 
 file(COPY scene DESTINATION .)
 file(COPY model DESTINATION .)
+file(COPY img DESTINATION .)
