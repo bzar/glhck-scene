@@ -1,7 +1,7 @@
 #ifndef OBJECT_HH
 #define OBJECT_HH
 
-#include "GL/glhck.h"
+#include "glhck/glhck.h"
 #include "gameworld.h"
 #include <string>
 
@@ -51,7 +51,7 @@ public:
 protected:
   void setObject(glhckObject* value);
   void setMaterialFlag(glhckMaterialFlags flag, bool value);
-  glhckColor toGlhckColor(Color const& c);
+  glhckColorb toGlhckColor(Color const& c);
   GameWorld* world;
   glhckObject* o;
 };

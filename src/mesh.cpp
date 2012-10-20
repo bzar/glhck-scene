@@ -7,7 +7,7 @@ Mesh::Mesh(GameWorld* world) :
   Object(world, glhckObjectNew()),
   Entity(world), Renderable(world)
 {
-  glhckObjectSetGeometryType(o, GLHCK_TRIANGLES);
+  glhckObjectNewGeometry(o)->type = GLHCK_TRIANGLES;
 }
 
 void Mesh::render(ew::RenderContext* context)
@@ -26,10 +26,10 @@ void Mesh::setVertices(std::vector<Vertex> const& vertices)
       toGlhckColor(v.color)
     };
   });
-  glhckObjectInsertVertexData3d(o, data.size(), data.data());
+  glhckGeometrySetVertices(glhckObjectGetGeometry(o), GLHCK_VERTEX_V3F, data.data(), data.size());
 }
 
 void Mesh::setIndices(std::vector<unsigned int> const& indices)
 {
-  glhckObjectInsertIndices(o, indices.size(), indices.data());
+  glhckObjectInsertIndices(o, indices.size(), GLHCK_INDEX_INTEGER, indices.data());
 }

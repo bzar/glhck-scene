@@ -5,7 +5,7 @@
 #include "ew/updatable.h"
 #include "object.h"
 
-#include "GL/glhck.h"
+#include "glhck/glhck.h"
 #include <string>
 
 class Camera : public Object, public ew::Updatable

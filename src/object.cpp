@@ -102,7 +102,7 @@ void Object::setScale(float const value)
 
 void Object::setColor(Color const& color)
 {
-  glhckColor c = toGlhckColor(color);
+  glhckColorb c = toGlhckColor(color);
   glhckObjectColor(o, &c);
 }
 
@@ -150,7 +150,7 @@ void Object::setMaterialFlag(glhckMaterialFlags flag, bool value)
   }
 }
 
-glhckColor Object::toGlhckColor(Color const& c)
+glhckColorb Object::toGlhckColor(const Object::Color& c)
 {
   unsigned char r = c.r * 255;
   unsigned char g = c.g * 255;

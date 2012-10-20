@@ -5,7 +5,7 @@
 #include "ew/renderable.h"
 #include "object.h"
 
-#include "GL/glhck.h"
+#include "glhck/glhck.h"
 #include <vector>
 
 class Mesh : public Object, public ew::Renderable
