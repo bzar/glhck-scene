@@ -27,6 +27,7 @@ void Mesh::setVertices(std::vector<Vertex> const& vertices)
     };
   });
   glhckGeometrySetVertices(glhckObjectGetGeometry(o), GLHCK_VERTEX_V3F, data.data(), data.size());
+  glhckObjectUpdate(o);
 }
 
 void Mesh::setIndices(std::vector<unsigned int> const& indices)
