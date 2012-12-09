@@ -38,6 +38,8 @@ int main(int argc, char** argv)
   if(!glhckDisplayCreate(WIDTH, HEIGHT, GLHCK_RENDER_AUTO))
     return EXIT_FAILURE;
 
+  glhckSetGlobalPrecision(GLHCK_INDEX_INTEGER, GLHCK_VERTEX_V3F);
+  
   int retval = gameloop(window);
 
   glhckTerminate();
