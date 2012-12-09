@@ -22,9 +22,10 @@ int main(int argc, char** argv)
   if (!glfwInit())
     return EXIT_FAILURE;
 
-  glfwOpenWindowHint(GLFW_DEPTH_BITS, 24);
-  GLFWwindow window = glfwOpenWindow(WIDTH, HEIGHT, GLFW_WINDOWED, "glhck scene", NULL);
-
+  glfwWindowHint(GLFW_DEPTH_BITS, 24);
+  GLFWwindow window = glfwCreateWindow(WIDTH, HEIGHT, GLFW_WINDOWED, "glhck scene", NULL);
+  glfwMakeContextCurrent(window);
+  
   if(!window)
     return EXIT_FAILURE;
 
@@ -61,7 +62,7 @@ void windowResizeCallback(GLFWwindow window, int width, int height)
 int gameloop(GLFWwindow& window)
 {
   GLFWControlContext controlContext(&window);
-  GlhckGLFWRenderContext renderContext;
+  GlhckGLFWRenderContext renderContext(window);
   GLFWTimeContext timeContext;
   ew::Engine engine(&controlContext, &renderContext, &timeContext);
 

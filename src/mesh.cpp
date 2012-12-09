@@ -31,5 +31,5 @@ void Mesh::setVertices(std::vector<Vertex> const& vertices)
 
 void Mesh::setIndices(std::vector<unsigned int> const& indices)
 {
-  glhckObjectInsertIndices(o, indices.size(), GLHCK_INDEX_INTEGER, indices.data());
+  glhckObjectInsertIndices(o, GLHCK_INDEX_INTEGER, indices.data(), indices.size());
 }
