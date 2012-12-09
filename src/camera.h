@@ -18,12 +18,6 @@ public:
 
   void update(float const delta);
 
-  virtual float getYaw() const;
-  virtual float getRoll() const;
-
-  virtual void setYaw(float const value);
-  virtual void setRoll(float const value);
-
 private:
   glhckCamera* c;
 };

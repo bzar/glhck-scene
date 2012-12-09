@@ -1,7 +1,7 @@
 Scene {
   Camera {
     x: 0, y: 0, z: 0
-    yaw: -15, pitch: 180, roll: 0
+    yaw: 165, pitch: 0, roll: 0
 
     SequentialAnimation {
       loop: true
@@ -13,7 +13,7 @@ Scene {
       Animation {
         duration: 5
         Roll { to: -5 }
-        Yaw { from: 15, delta: -30 }
+        Yaw { from: 195, delta: -30 }
       }
     }
   }
@@ -21,7 +21,7 @@ Scene {
   Model {
     filename: "model/raf22031.ctm"
     x: -5, y: 0, z: -20
-    yaw: -45, pitch: -90, roll: 0
+    yaw: -45, pitch: 0, roll: 0
     wireframe: true
 
     Animation {
@@ -33,7 +33,7 @@ Scene {
   Model {
     filename: "model/raf22031.ctm"
     x: 0, y: 0, z: -20
-    yaw: 0, pitch: -90, roll: 0
+    yaw: 0, pitch: 0, roll: 0
     SequentialAnimation {
       loop: true
       Animation {
@@ -50,7 +50,7 @@ Scene {
   Model {
     filename: "model/raf22031.ctm"
     x: 5, y: 0, z: -20
-    yaw: 45, pitch: -90, roll: 0
+    yaw: 45, pitch: 0, roll: 0
     aabb: true
     obb: true
     Animation {
@@ -62,7 +62,7 @@ Scene {
   Model {
     filename: "model/raf22031.ctm"
     x: -5, y: -3, z: -20
-    yaw: -45, pitch: -90, roll: 0
+    yaw: -45, pitch: 0, roll: 0
 
     SequentialAnimation {
       loop: true
@@ -80,14 +80,14 @@ Scene {
   Model {
     filename: "model/raf22031.ctm"
     x: 0, y: -3, z: -20
-    yaw: 0, pitch: -90, roll: 0
+    yaw: 0, pitch: 0, roll: 0
     materialAlpha: true
     color: Color { a: 0.5 }
   }
   Model {
     filename: "model/raf22031.ctm"
     x: 5, y: -3, z: -20
-    yaw: 45, pitch: -90, roll: 0
+    yaw: 45, pitch: 0, roll: 0
 
     SequentialAnimation {
       loop: true
@@ -106,7 +106,7 @@ Scene {
   Model {
     filename: "model/raf22031.ctm"
     x: -5, y: 3, z: -20
-    yaw: -45, pitch: -90, roll: 0
+    yaw: -45, pitch: 0, roll: 0
     SequentialAnimation {
       loop: true
       Animation {
@@ -124,7 +124,7 @@ Scene {
   Model {
     filename: "model/raf22031.ctm"
     x: 0, y: 3, z: -20
-    yaw: 0, pitch: -90, roll: 0
+    yaw: 0, pitch: 0, roll: 0
 
     SequentialAnimation {
       loop: true
@@ -143,7 +143,7 @@ Scene {
   Model {
     filename: "model/raf22031.ctm"
     x: 5, y: 3, z: -20
-    yaw: 45, pitch: -90, roll: 0
+    yaw: 45, pitch: 0, roll: 0
 
     SequentialAnimation {
       loop: true
@@ -164,7 +164,7 @@ Scene {
   Model {
     filename: "model/raf22031.ctm"
     x: -15, y: 0, z: -25
-    yaw: 90, pitch: -90, roll: 0
+    yaw: 90, pitch: 0, roll: 0
     color: Color{ r: 1.0, g: 0.7, b: 0.7 }
 
     SequentialAnimation {

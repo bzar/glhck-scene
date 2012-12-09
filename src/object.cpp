@@ -33,7 +33,7 @@ float Object::getZ() const {
 
 float Object::getYaw() const {
   kmVec3 const* rot = glhckObjectGetRotation(o);
-  return rot->z;
+  return rot->y;
 }
 
 float Object::getPitch() const {
@@ -43,7 +43,7 @@ float Object::getPitch() const {
 
 float Object::getRoll() const {
   kmVec3 const* rot = glhckObjectGetRotation(o);
-  return rot->y;
+  return rot->z;
 }
 
 float Object::getScale() const {
@@ -76,7 +76,7 @@ void Object::setZ(float const value)
 void Object::setYaw(float const value)
 {
   kmVec3 rot = *glhckObjectGetRotation(o);
-  rot.z = value;
+  rot.y = value;
   glhckObjectRotation(o, &rot);
 }
 
@@ -90,7 +90,7 @@ void Object::setPitch(float const value)
 void Object::setRoll(float const value)
 {
   kmVec3 rot = *glhckObjectGetRotation(o);
-  rot.y = value;
+  rot.z = value;
   glhckObjectRotation(o, &rot);
 }
 
