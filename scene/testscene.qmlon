@@ -236,14 +236,14 @@ Scene {
   Sprite {
     filename: "img/infantry_1.png"
     x: 0, y: 0, z: -50
-    scale: 1
+    scale: 2
     materialAlpha: true
   }
 
   Sprite {
     filename: "img/infantry_1.png"
     x: -3, y: 0, z: -5
-    scale: 0.01
+    scale: 0.02
     materialAlpha: true
     SequentialAnimation {
       loop: true
@@ -276,7 +276,7 @@ Scene {
   Sprite {
     filename: "img/infantry_1.png"
     x: -3, y: 0, z: -5
-    scale: 0.01
+    scale: 0.02
     materialAlpha: true
     SequentialAnimation {
       PauseAnimation { duration: 2.2 }
@@ -312,7 +312,7 @@ Scene {
   Sprite {
     filename: "img/infantry_1.png"
     x: -3, y: 0, z: -5
-    scale: 0.01
+    scale: 0.02
     materialAlpha: true
     SequentialAnimation {
       PauseAnimation { duration: 4.4 }

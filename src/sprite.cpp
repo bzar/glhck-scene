@@ -3,7 +3,7 @@
 ew::UID const Sprite::ID = ew::getUID();
 
 Sprite::Sprite(GameWorld* world, std::string const& filename) :
-  Object(world, glhckSpriteNewFromFile(filename.data(), 0, 0, GLHCK_TEXTURE_NONE)),
+  Object(world, glhckSpriteNewFromFile(filename.data(), 0, 0, 0, nullptr)),
   Entity(world), Renderable(world)
 {
 }

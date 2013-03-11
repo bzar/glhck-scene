@@ -108,8 +108,8 @@ void Object::setColor(Color const& color)
 
 void Object::setTexture(std::string const& filename)
 {
-  glhckTexture* t = glhckTextureNew(filename.data(), GLHCK_TEXTURE_DEFAULTS);
-  glhckObjectSetTexture(o, t);
+  glhckTexture* t = glhckTextureNew(filename.data(), 0, nullptr);
+  glhckObjectTexture(o, t);
   glhckTextureFree(t);
 }
 
@@ -130,7 +130,9 @@ void Object::setWireframe(bool value)
 
 void Object::setMaterialAlpha(bool value)
 {
-  setMaterialFlag(GLHCK_MATERIAL_ALPHA, value);
+  glhckObjectMaterialBlend(o, 
+                           value ? GLHCK_SRC_ALPHA : GLHCK_ONE, 
+                           value ? GLHCK_ONE_MINUS_SRC_ALPHA : GLHCK_ZERO);
 }
 
 void Object::setObject(glhckObject* value)
