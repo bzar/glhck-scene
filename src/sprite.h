@@ -17,6 +17,9 @@ public:
   ew::UID getEntityId() const { return ID; }
 
   void render(ew::RenderContext* context);
+  
+private:
+  static glhckTextureParameters const TEXTURE_PARAMETERS;
 };
 
 #endif
